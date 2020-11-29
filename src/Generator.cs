@@ -72,12 +72,8 @@ namespace JwtGenerator
 
         private static ECDsa LoadPrivateKey(string privateKey)
         {
-            var ecdsa = new ECDsaCng()
-            {
-                HashAlgorithm = CngAlgorithm.ECDsaP256
-            };
+            var ecdsa = ECDsa.Create();
             ecdsa.ImportECPrivateKey(File.ReadAllBytes(privateKey), out _);
-
             return ecdsa;
         }
 
